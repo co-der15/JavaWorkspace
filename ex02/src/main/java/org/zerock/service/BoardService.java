@@ -16,5 +16,8 @@ public interface BoardService {
 	int remove(Long bno);
 	
 	List<BoardVO > getList();
-
+	
+	List<BoardVO> getList(Criteria cri);
+	
+	int getTotal(Criteria cri);
 }

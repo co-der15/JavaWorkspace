@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@include file="../includes/header.jsp"%>
@@ -17,6 +17,8 @@
 			<!-- /.panel-heading -->
 			<div class="panel-body">
 			<form>
+				<input type='hidden' name='pageNum' value='${cri.pageNum }'>
+				<input type='hidden' name='amount' value='${cri.amount }'>
 					<div class="form-group">
 						<label>BNO</label> 
 						<input class="form-control" name="bno" readonly="readonly" value='<c:out value="${board.bno}"/>'>
@@ -27,7 +29,7 @@
 					</div>
 					<div class="form-group">
 						<label>Content</label> 
-						<textarea rows="5" cols="50" name="context" class="form-control"><c:out value="${board.content}"/></textarea>
+						<textarea rows="5" cols="50" name="content" class="form-control"><c:out value="${board.content}"/></textarea>
 					</div>
 
 					<div class="form-group">

@@ -13,44 +13,53 @@
 	</insert>
 
 	<insert id="insertSelectKey">
-		<selectKey order="BEFORE" keyProperty="bno" resultType="Long">
-		select seq_board.nextval from dual
+		<selectKey order="BEFORE" keyProperty="bno"
+			resultType="Long">
+			select seq_board.nextval from dual
 		</selectKey>
 
 		insert into tbl_board (bno, title, content, writer)
 		values
-		(#{bno}, #{title}, #{content}, #{writer})
+		(#{bno},
+		#{title}, #{content}, #{writer})
 	</insert>
-	
+
 	<select id="read" resultType="org.zerock.domain.BoardVO">
-		select * from tbl_board where bno = #{bno}
+		select * from tbl_board where bno =
+		#{bno}
 	</select>
-	
+
 	<delete id="delete">
 		delete from tbl_board where bno = #{bno}
 	</delete>
-	
+
 	<update id="update">
 		update tbl_board
 		set title = #{title},
-		content = #{content},
+		content =
+		#{content},
 		writer = #{writer},
 		updatedate = sysdate
 		where bno = #{bno}
 	</update>
-	
-<!-- 	<select id="getListWithPaging" resultType="org.zerock.domain.BoardVO">
+
+	<select id="getListWithPaging"
+		resultType="org.zerock.domain.BoardVO">
 	<![CDATA[
-		select * from
+	select * from
 		(
-			select /* INDEX_DESC(tbl_board pk_board) */ rownum rn, bno, title, writer
-			from tbl_board
-			where bno > 0 and rownum > 0 and rownum <= (#{pageNum} * #{amount})
+		select /*+ INDEX_DESC(tbl_board pk_board) */ rownum rn, bno, title, writer, regdate, updateDate
+		from tbl_board
+		where bno > 0 and rownum > 0 and rownum <= (#{pageNum} * #{amount})
 		)
-		where rn > (#{pageNum}-1) * #{amount}
+	where rn > (#{pageNum} - 1) * #{amount}
 	]]>
-	</select>	
- -->
+	</select>
+	
+	<select id="getTotalCount" resultType="int">
+		select count(bno) from tbl_board
+	</select>
+	
 </mapper>
 
 

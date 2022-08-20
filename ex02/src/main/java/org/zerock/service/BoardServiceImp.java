@@ -52,4 +52,16 @@ public class BoardServiceImp implements BoardService {
 		return mapper.getList();
 	}
 
+	@Override
+	public List<BoardVO> getList(Criteria cri) {
+		
+		return mapper.getListWithPaging(cri);
+	}
+
+	@Override
+	public int getTotal(Criteria cri) {
+		
+		return mapper.getTotalCount(cri);
+	}
+
 }
