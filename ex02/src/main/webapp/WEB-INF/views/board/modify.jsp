@@ -36,9 +36,9 @@
 						<label>Writer</label> 
 						<input class="form-control" name="writer" value='<c:out value="${board.writer}"/>'>
 					</div>
-					<button class="btn btn-default" data-oper='modify'>Modify</button>
-                    <button class="btn btn-danger" data-oper='remove'>Remove</button>
-                    <button class="btn btn-info" data-oper='list'>List</button>
+					<button type="submit" class="btn btn-default" data-oper='modify'>Modify</button>
+                    <button type="submit" class="btn btn-danger" data-oper='remove'>Remove</button>
+                    <button type="submit" class="btn btn-info" data-oper='list'>List</button>
             </form>
 			</div>
 			<!-- /.panel-body -->
