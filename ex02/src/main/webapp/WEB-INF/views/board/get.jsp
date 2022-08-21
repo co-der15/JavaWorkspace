@@ -49,7 +49,7 @@
 					
 				$(".listBtn").click(function(e) {
 					e.preventDefault();
-					actionForm.find("<input[name='bno']").remove();
+					actionForm.find("input[name='bno']").remove();
 					actionForm.submit();
 				});
 				

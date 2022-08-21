@@ -42,7 +42,7 @@
                                 </tbody>
                             </table>
                             <!-- /.table-responsive -->
-                            <h3>${pageMaker }</h3>
+                            <%-- <h3>${pageMaker }</h3> --%>
                             <div class="pull-right">
                             	<ul class="pagination">
 									<c:if test="${pageMaker.prev}">
