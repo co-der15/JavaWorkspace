@@ -42,6 +42,20 @@
                                 </tbody>
                             </table>
                             <!-- /.table-responsive -->
+                            <form id='searchForm' action="/board/list" method="get">
+                            	<select name="type">
+                            		<option value="" ${pageMaker.cri.type == null?"selectd":"" }>----</option>
+                            		<option value="T" ${pageMaker.cri.type eq 'T'?"selectd":"" }>제목</option>
+                            		<option value="C" ${pageMaker.cri.type eq 'C'?"selectd":"" }>내용</option>
+                            		<option value="W" ${pageMaker.cri.type eq 'W'?"selectd":"" }>작성자</option>
+                            		<option value="TC" ${pageMaker.cri.type eq 'TC'?"selectd":"" }>제목+내용</option>
+                            		<option value="TCW" ${pageMaker.cri.type eq 'TCW'?"selectd":"" }>제목+내용+작성자</option>
+                            	</select>
+                            	<input type='text' name='keyword' value='${pageMaker.cri.keyword }'>
+                            	<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum }'>
+                            	<input type='hidden' name='amount' value='${pageMaker.cri.amount }'>
+                            	<button class='btn btn-default'>search</button>
+                            </form>
                             <%-- <h3>${pageMaker }</h3> --%>
                             <div class="pull-right">
                             	<ul class="pagination">
@@ -62,6 +76,8 @@
                             <form id='actionForm' action="/board/list" method='get'>
   								<input type='hidden' name='pageNum' value = '${pageMaker.cri.pageNum}'>
   								<input type='hidden' name='amount' value = '${pageMaker.cri.amount}'>
+  								<input type='hidden' name='type' value = '${pageMaker.cri.type}'>
+  								<input type='hidden' name='keyword' value = '${pageMaker.cri.keyword}'>
 							</form>
                             
                         </div>
@@ -139,6 +155,7 @@ $(document).ready(function() {
 	});
 	
 	$(".move").on("click", function(e) {
+		
 		e.preventDefault();
 		
 		var targetBno = $(this).attr("href");
@@ -148,6 +165,18 @@ $(document).ready(function() {
 		actionForm.append("<input type='hidden' name='bno' value='"+targetBno+"'>'");
 		actionForm.attr("action", "/board/get").submit();
 		
+	});
+	
+	var serachForm = $("#searchForm");
+	
+	$("#searchForm button").on("click", function(e){
+		
+		e.preventDefault();
+		console.log("............................click");
+		
+		searchForm.find("input[name='pageNum']").val(1);
+		
+		searchForm.submit();
 	});
 });
 

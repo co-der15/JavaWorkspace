@@ -12,6 +12,9 @@ public class Criteria {
 	private int pageNum;
 	private int amount;
 	
+	private String type; // t, tc, tsw, cw
+	private String keyword;
+	
 	public Criteria() {
 		this(1,10);
 	}
@@ -20,6 +23,10 @@ public class Criteria {
 		super();
 		this.pageNum = pageNum;
 		this.amount = amount;
+	}
+	
+	public String[] getTypeArr() {
+		return type == null? new String[] {}: type.split("");
 	}
 
 }
