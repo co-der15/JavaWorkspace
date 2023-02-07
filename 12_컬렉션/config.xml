@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>설정 XML</comment>
+<entry key="소유자">홍길동</entry>
+<entry key="파일 사이즈">20KB</entry>
+<entry key="작성일">2021-07-20</entry>
+<entry key="비고">내용 없음</entry>
+</properties>
